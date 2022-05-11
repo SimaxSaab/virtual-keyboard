@@ -282,13 +282,134 @@ document.body.insertAdjacentHTML('afterbegin', `
 
 const mainArea = document.querySelectorAll('.key');
 const output = document.querySelector('.output');
+let timer;
+let sep = 0;
+let arrUpDown = [];
+
+const backspace = () => {
+  if (sep === 0) return;
+  const text = output.innerHTML;
+  output.innerHTML = text.slice(0, sep - 1) + text.slice(sep);
+  sep -= 1;
+};
+
+const deleteSym = () => {
+  const text = output.innerHTML;
+  output.innerHTML = text.slice(0, sep) + text.slice(sep + 1);
+};
+
+const delay = (fn, sym) => {
+  timer = setTimeout(() => {
+    timer = setInterval(() => {
+      fn(sym);
+    }, 50);
+    return timer;
+  }, 500);
+};
+
+const focus = () => {
+  output.focus();
+  output.selectionStart = sep;
+  output.selectionEnd = sep;
+};
+
+const textFocus = () => {
+  sep = output.selectionStart;
+};
 
 function main(e) {
-  output.innerHTML += e.currentTarget.querySelector('.sub').innerText;
+  const eventObj = e.currentTarget;
+  const symbol = eventObj.querySelector('.sub').innerText;
+  let res = '';
+  let i = -1;
+  const insSymb = (sym) => {
+    output.innerHTML = output.innerHTML.slice(0, sep) + sym + output.innerHTML.slice(sep);
+    sep += 1;
+  };
+  switch (eventObj.dataset.code) {
+    case 'Delete':
+      deleteSym();
+      delay(deleteSym);
+      break;
+    case 'Backspace':
+      backspace();
+      delay(backspace);
+      break;
+    case 'Enter':
+      insSymb('\n');
+      delay(insSymb, '\n');
+      break;
+    case 'ArrowLeft':
+      sep -= 1;
+      break;
+    case 'ArrowRight':
+      sep += 1;
+      break;
+    case 'ArrowUp':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i - 1] === 'undefined') {
+        sep = 0;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i - 1].length) {
+        // если позиция в текущей строке больше длині предідущей
+        sep = res.length - arrUpDown[i].length - 2;
+      } else {
+        sep = sep - arrUpDown[i - 1].length - 1;
+      }
+      break;
+    case 'ArrowDown':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i + 1] === 'undefined') {
+        sep = res.length - 1;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i + 1].length) {
+        // если позиция больше длины следующей строки
+        sep = res.length + arrUpDown[i + 1].length;
+      } else {
+        sep += arrUpDown[i].length + 1;
+      }
+      break;
+    default:
+      insSymb(symbol);
+      delay(insSymb, symbol);
+  }
+  eventObj.addEventListener('mouseup', () => {
+    clearInterval(timer);
+    focus();
+  });
+  eventObj.classList.add('active');
 }
 
 document.onkeydown = function (e) {
-  output.innerHTML += e.key;
+  e.preventDefault();
+  output.innerHTML = output.innerHTML.slice(0, sep) + e.key + output.innerHTML.slice(sep);
+  sep += 1;
+  mainArea.forEach((item) => {
+    if (item.dataset.code === e.code) item.classList.add('active');
+  });
 };
 
-mainArea.forEach((item) => item.addEventListener('click', main));
+document.onkeyup = function () {
+  mainArea.forEach((item) => {
+    item.classList.remove('active');
+  });
+  output.focus();
+  output.selectionStart = sep;
+};
+
+document.onmouseup = function () {
+  mainArea.forEach((item) => {
+    item.classList.remove('active');
+  });
+};
+
+mainArea.forEach((item) => item.addEventListener('mousedown', main));
+output.addEventListener('click', textFocus);

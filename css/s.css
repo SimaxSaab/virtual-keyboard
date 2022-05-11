@@ -124,7 +124,7 @@ main {
   width: 76px;
 }
 
-[data-code="KeyD"],
+/* [data-code="KeyD"],
 [data-code="KeyS"],
 [data-code="KeyA"],
 [data-code="KeyW"],
@@ -133,7 +133,7 @@ main {
 [data-code="ArrowDown"],
 [data-code="ArrowRight"] {
   background: rgb(125, 253, 75);
-}
+} */
 
 
 .active {
