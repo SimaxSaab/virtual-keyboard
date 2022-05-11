@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-param-reassign */
 /* eslint-disable func-names */
 document.body.insertAdjacentHTML('afterbegin', `
   <main>
@@ -280,15 +281,1060 @@ document.body.insertAdjacentHTML('afterbegin', `
   </main>
 `);
 
+const ru = [
+  {
+    small: 'ё',
+    shift: 'Ё',
+    code: 'Backquote',
+    keycode: '192',
+  },
+  {
+    small: '1',
+    shift: '!',
+    code: 'Digit1',
+    keycode: '49',
+  },
+  {
+    small: '2',
+    shift: '"',
+    code: 'Digit2',
+    keycode: '50',
+  },
+  {
+    small: '3',
+    shift: '№',
+    code: 'Digit3',
+    keycode: '51',
+  },
+  {
+    small: '4',
+    shift: ';',
+    code: 'Digit4',
+    keycode: '52',
+  },
+  {
+    small: '5',
+    shift: '%',
+    code: 'Digit5',
+    keycode: '53',
+  },
+  {
+    small: '6',
+    shift: ':',
+    code: 'Digit6',
+    keycode: '54',
+  },
+  {
+    small: '7',
+    shift: '?',
+    code: 'Digit7',
+    keycode: '55',
+  },
+  {
+    small: '8',
+    shift: '*',
+    code: 'Digit8',
+    keycode: '56',
+  },
+  {
+    small: '9',
+    shift: '(',
+    code: 'Digit9',
+    keycode: '57',
+  },
+  {
+    small: '0',
+    shift: ')',
+    code: 'Digit0',
+    keycode: '48',
+  },
+  {
+    small: '-',
+    shift: '_',
+    code: 'Minus',
+    keycode: '189',
+  },
+  {
+    small: '=',
+    shift: '+',
+    code: 'Equal',
+    keycode: '187',
+  },
+  {
+    small: 'Delete',
+    shift: null,
+    code: 'Delete',
+    keycode: '46',
+  },
+  {
+    small: 'Tab',
+    shift: null,
+    code: 'Tab',
+    keycode: '9',
+  },
+  {
+    small: 'й',
+    shift: 'Й',
+    code: 'KeyQ',
+    keycode: '81',
+  },
+  {
+    small: 'ц',
+    shift: 'Ц',
+    code: 'KeyW',
+    keycode: '87',
+  },
+  {
+    small: 'у',
+    shift: 'У',
+    code: 'KeyE',
+    keycode: '69',
+  },
+  {
+    small: 'к',
+    shift: 'К',
+    code: 'KeyR',
+    keycode: '82',
+  },
+  {
+    small: 'е',
+    shift: 'Е',
+    code: 'KeyT',
+    keycode: '84',
+  },
+  {
+    small: 'н',
+    shift: 'Н',
+    code: 'KeyY',
+    keycode: '89',
+  },
+  {
+    small: 'г',
+    shift: 'Г',
+    code: 'KeyU',
+    keycode: '85',
+  },
+  {
+    small: 'ш',
+    shift: 'Ш',
+    code: 'KeyI',
+    keycode: '73',
+  },
+  {
+    small: 'щ',
+    shift: 'Щ',
+    code: 'KeyO',
+    keycode: '79',
+  },
+  {
+    small: 'з',
+    shift: 'З',
+    code: 'KeyP',
+    keycode: '80',
+  },
+  {
+    small: 'х',
+    shift: 'Х',
+    code: 'BracketLeft',
+    keycode: '219',
+  },
+  {
+    small: 'ъ',
+    shift: 'Ъ',
+    code: 'BracketRight',
+    keycode: '221',
+  },
+  {
+    small: 'Backspace',
+    shift: null,
+    code: 'Backspace',
+    keycode: '8',
+  },
+  {
+    small: 'CapsLock',
+    shift: null,
+    code: 'CapsLock',
+    keycode: '0',
+  },
+  {
+    small: 'ф',
+    shift: 'Ф',
+    code: 'KeyA',
+    keycode: '65',
+  },
+  {
+    small: 'ы',
+    shift: 'Ы',
+    code: 'KeyS',
+    keycode: '83',
+  },
+  {
+    small: 'в',
+    shift: 'В',
+    code: 'KeyD',
+    keycode: '68',
+  },
+  {
+    small: 'а',
+    shift: 'А',
+    code: 'KeyF',
+    keycode: '70',
+  },
+  {
+    small: 'п',
+    shift: 'П',
+    code: 'KeyG',
+    keycode: '71',
+  },
+  {
+    small: 'р',
+    shift: 'Р',
+    code: 'KeyH',
+    keycode: '72',
+  },
+  {
+    small: 'о',
+    shift: 'О',
+    code: 'KeyJ',
+    keycode: '74',
+  },
+  {
+    small: 'л',
+    shift: 'Л',
+    code: 'KeyK',
+    keycode: '75',
+  },
+  {
+    small: 'д',
+    shift: 'Д',
+    code: 'KeyL',
+    keycode: '76',
+  },
+  {
+    small: 'ж',
+    shift: 'Ж',
+    code: 'Semicolon',
+    keycode: '186',
+  },
+  {
+    small: 'э',
+    shift: 'Э',
+    code: 'Quote',
+    keycode: '222',
+  },
+  {
+    small: '\\',
+    shift: '/',
+    code: 'Backslash',
+    keycode: '220',
+  },
+  {
+    small: 'Enter',
+    shift: null,
+    code: 'Enter',
+    keycode: '13',
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftLeft',
+    keycode: '16',
+  },
+  {
+    small: '/',
+    shift: '|',
+    code: 'IntlBackslash',
+    keycode: '191',
+  },
+  {
+    small: 'я',
+    shift: 'Я',
+    code: 'KeyZ',
+    keycode: '90',
+  },
+  {
+    small: 'ч',
+    shift: 'Ч',
+    code: 'KeyX',
+    keycode: '88',
+  },
+  {
+    small: 'с',
+    shift: 'С',
+    code: 'KeyC',
+    keycode: '67',
+  },
+  {
+    small: 'м',
+    shift: 'М',
+    code: 'KeyV',
+    keycode: '86',
+  },
+  {
+    small: 'и',
+    shift: 'И',
+    code: 'KeyB',
+    keycode: '66',
+  },
+  {
+    small: 'т',
+    shift: 'Т',
+    code: 'KeyN',
+    keycode: '78',
+  },
+  {
+    small: 'ь',
+    shift: 'Ь',
+    code: 'KeyM',
+    keycode: '77',
+  },
+  {
+    small: 'б',
+    shift: 'Б',
+    code: 'Comma',
+    keycode: '188',
+  },
+  {
+    small: 'ю',
+    shift: 'Ю',
+    code: 'Period',
+    keycode: '190',
+  },
+  {
+    small: '.',
+    shift: ',',
+    code: 'Slash',
+    keycode: '191',
+  },
+  {
+    small: '&uarr;',
+    shift: null,
+    code: 'ArrowUp',
+    keycode: '38',
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftRight',
+    keycode: '16',
+  },
+  {
+    small: 'Ctrl',
+    shift: null,
+    code: 'ControlLeft',
+    keycode: '17',
+  },
+  {
+    small: 'Win',
+    shift: null,
+    code: 'Win',
+    keycode: '1000',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltLeft',
+    keycode: '18',
+  },
+  {
+    small: ' ',
+    shift: null,
+    code: 'Space',
+    keycode: '32',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltRight',
+    keycode: '225',
+  },
+  {
+    small: '&larr;',
+    shift: null,
+    code: 'ArrowLeft',
+    keycode: '37',
+  },
+  {
+    small: '&darr;',
+    shift: null,
+    code: 'ArrowDown',
+    keycode: '40',
+  },
+  {
+    small: '&rarr;',
+    shift: null,
+    code: 'ArrowRight',
+    keycode: '39',
+  },
+  {
+    small: 'Ctrl',
+    shift: null,
+    code: 'ControlRight',
+    keycode: '17',
+  },
+];
+
+const en = [
+  {
+    small: '`',
+    shift: '~',
+    code: 'Backquote',
+    keycode: '192',
+  },
+  {
+    small: '1',
+    shift: '!',
+    code: 'Digit1',
+    keycode: '49',
+  },
+  {
+    small: '2',
+    shift: '@',
+    code: 'Digit2',
+    keycode: '50',
+  },
+  {
+    small: '3',
+    shift: '#',
+    code: 'Digit3',
+    keycode: '51',
+  },
+  {
+    small: '4',
+    shift: '$',
+    code: 'Digit4',
+    keycode: '52',
+  },
+  {
+    small: '5',
+    shift: '%',
+    code: 'Digit5',
+    keycode: '53',
+  },
+  {
+    small: '6',
+    shift: '^',
+    code: 'Digit6',
+    keycode: '54',
+  },
+  {
+    small: '7',
+    shift: '&',
+    code: 'Digit7',
+    keycode: '55',
+  },
+  {
+    small: '8',
+    shift: '*',
+    code: 'Digit8',
+    keycode: '56',
+  },
+  {
+    small: '9',
+    shift: '(',
+    code: 'Digit9',
+    keycode: '57',
+  },
+  {
+    small: '0',
+    shift: ')',
+    code: 'Digit0',
+    keycode: '48',
+  },
+  {
+    small: '-',
+    shift: '_',
+    code: 'Minus',
+    keycode: '189',
+  },
+  {
+    small: '=',
+    shift: '+',
+    code: 'Equal',
+    keycode: '187',
+  },
+  {
+    small: 'Delete',
+    shift: null,
+    code: 'Delete',
+    keycode: '46',
+  },
+  {
+    small: 'Tab',
+    shift: null,
+    code: 'Tab',
+    keycode: '9',
+  },
+  {
+    small: 'q',
+    shift: 'Q',
+    code: 'KeyQ',
+    keycode: '81',
+  },
+  {
+    small: 'w',
+    shift: 'W',
+    code: 'KeyW',
+    keycode: '87',
+  },
+  {
+    small: 'e',
+    shift: 'E',
+    code: 'KeyE',
+    keycode: '69',
+  },
+  {
+    small: 'r',
+    shift: 'R',
+    code: 'KeyR',
+    keycode: '82',
+  },
+  {
+    small: 't',
+    shift: 'T',
+    code: 'KeyT',
+    keycode: '84',
+  },
+  {
+    small: 'y',
+    shift: 'Y',
+    code: 'KeyY',
+    keycode: '89',
+  },
+  {
+    small: 'u',
+    shift: 'U',
+    code: 'KeyU',
+    keycode: '85',
+  },
+  {
+    small: 'i',
+    shift: 'I',
+    code: 'KeyI',
+    keycode: '73',
+  },
+  {
+    small: 'o',
+    shift: 'O',
+    code: 'KeyO',
+    keycode: '79',
+  },
+  {
+    small: 'p',
+    shift: 'P',
+    code: 'KeyP',
+    keycode: '80',
+  },
+  {
+    small: '[',
+    shift: '{',
+    code: 'BracketLeft',
+    keycode: '219',
+  },
+  {
+    small: ']',
+    shift: '}',
+    code: 'BracketRight',
+    keycode: '221',
+  },
+  {
+    small: 'Backspace',
+    shift: null,
+    code: 'Backspace',
+    keycode: '8',
+  },
+  {
+    small: 'CapsLock',
+    shift: null,
+    code: 'CapsLock',
+    keycode: '0',
+  },
+  {
+    small: 'a',
+    shift: 'A',
+    code: 'KeyA',
+    keycode: '65',
+  },
+  {
+    small: 's',
+    shift: 'S',
+    code: 'KeyS',
+    keycode: '83',
+  },
+  {
+    small: 'd',
+    shift: 'D',
+    code: 'KeyD',
+    keycode: '68',
+  },
+  {
+    small: 'f',
+    shift: 'F',
+    code: 'KeyF',
+    keycode: '70',
+  },
+  {
+    small: 'g',
+    shift: 'G',
+    code: 'KeyG',
+    keycode: '71',
+  },
+  {
+    small: 'h',
+    shift: 'H',
+    code: 'KeyH',
+    keycode: '72',
+  },
+  {
+    small: 'j',
+    shift: 'J',
+    code: 'KeyJ',
+    keycode: '74',
+  },
+  {
+    small: 'k',
+    shift: 'K',
+    code: 'KeyK',
+    keycode: '75',
+  },
+  {
+    small: 'l',
+    shift: 'L',
+    code: 'KeyL',
+    keycode: '76',
+  },
+  {
+    small: ';',
+    shift: ':',
+    code: 'Semicolon',
+    keycode: '186',
+  },
+  {
+    small: "'",
+    shift: '"',
+    code: 'Quote',
+    keycode: '222',
+  },
+  {
+    small: '\\',
+    shift: '|',
+    code: 'Backslash',
+    keycode: '220',
+  },
+  {
+    small: 'Enter',
+    shift: null,
+    code: 'Enter',
+    keycode: 13,
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftLeft',
+    keycode: '16',
+  },
+  {
+    small: '<',
+    shift: '>',
+    code: 'IntlBackslash',
+    keycode: '220',
+  },
+  {
+    small: 'z',
+    shift: 'Z',
+    code: 'KeyZ',
+    keycode: '90',
+  },
+  {
+    small: 'x',
+    shift: 'X',
+    code: 'KeyX',
+    keycode: '88',
+  },
+  {
+    small: 'c',
+    shift: 'C',
+    code: 'KeyC',
+    keycode: '67',
+  },
+  {
+    small: 'v',
+    shift: 'V',
+    code: 'KeyV',
+    keycode: '86',
+  },
+  {
+    small: 'b',
+    shift: 'B',
+    code: 'KeyB',
+    keycode: '66',
+  },
+  {
+    small: 'n',
+    shift: 'N',
+    code: 'KeyN',
+    keycode: '78',
+  },
+  {
+    small: 'm',
+    shift: 'M',
+    code: 'KeyM',
+    keycode: '77',
+  },
+  {
+    small: ',',
+    shift: '<',
+    code: 'Comma',
+    keycode: '188',
+  },
+  {
+    small: '.',
+    shift: '>',
+    code: 'Period',
+    keycode: '190',
+  },
+  {
+    small: '/',
+    shift: '?',
+    code: 'Slash',
+    keycode: '191',
+  },
+  {
+    small: '&uarr;',
+    shift: null,
+    code: 'ArrowUp',
+    keycode: '38',
+  },
+  {
+    small: 'Shift',
+    shift: null,
+    code: 'ShiftRight',
+    keycode: '16',
+  },
+  {
+    small: 'Ctrl',
+    shift: null,
+    code: 'ControlLeft',
+    keycode: '17',
+  },
+  {
+    small: 'Win',
+    shift: null,
+    code: 'Win',
+    keycode: '1000',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltLeft',
+    keycode: '18',
+  },
+  {
+    small: ' ',
+    shift: null,
+    code: 'Space',
+    keycode: '32',
+  },
+  {
+    small: 'Alt',
+    shift: null,
+    code: 'AltRight',
+    keycode: '225',
+  },
+  {
+    small: '&larr;',
+    shift: null,
+    code: 'ArrowLeft',
+    keycode: '37',
+  },
+  {
+    small: '&darr;',
+    shift: null,
+    code: 'ArrowDown',
+    keycode: '40',
+  },
+  {
+    small: '&rarr;',
+    shift: null,
+    code: 'ArrowRight',
+    keycode: '39',
+  },
+  {
+    small: 'Ctrl',
+    shift: null,
+    code: 'ControlRight',
+    keycode: '17',
+  },
+];
+
 const mainArea = document.querySelectorAll('.key');
 const output = document.querySelector('.output');
+let timer;
+let sep = 0;
+let arrUpDown = [];
+let lang = [];
+let swLang = window.localStorage.getItem('langStor') || 'ru';
+let capsLock = false;
+
+const init = () => {
+  if (swLang === 'ru') {
+    lang = ru;
+  } else {
+    lang = en;
+  }
+  mainArea.forEach((item, i) => {
+    item.querySelector('.sub').innerHTML = lang[i].small;
+  });
+};
+
+init();
+
+const backspace = () => {
+  if (sep === 0) return;
+  const text = output.innerHTML;
+  output.innerHTML = text.slice(0, sep - 1) + text.slice(sep);
+  sep -= 1;
+};
+
+const deleteSym = () => {
+  const text = output.innerHTML;
+  output.innerHTML = text.slice(0, sep) + text.slice(sep + 1);
+};
+
+const delay = (fn, sym) => {
+  timer = setTimeout(() => {
+    timer = setInterval(() => {
+      fn(sym);
+    }, 50);
+    return timer;
+  }, 500);
+};
+
+const focus = () => {
+  output.focus();
+  output.selectionStart = sep;
+  output.selectionEnd = sep;
+};
+
+const textFocus = () => {
+  sep = output.selectionStart;
+};
+
+const switchLanguage = () => {
+  if (swLang === 'ru') {
+    lang = en;
+    swLang = 'en';
+  } else {
+    lang = ru;
+    swLang = 'ru';
+  }
+  window.localStorage.setItem('langStor', swLang);
+  mainArea.forEach((item, i) => {
+    item.querySelector('.sub').innerHTML = lang[i].small;
+  });
+};
+
+const insSymb = (sym) => {
+  output.innerHTML = output.innerHTML.slice(0, sep) + sym + output.innerHTML.slice(sep);
+  sep += 1;
+};
 
 function main(e) {
-  output.innerHTML += e.currentTarget.querySelector('.sub').innerText;
+  const eventObj = e.currentTarget;
+  const symbol = eventObj.querySelector('.sub').innerText;
+  let res = '';
+  let i = -1;
+  switch (eventObj.dataset.code) {
+    case 'Tab':
+      insSymb('     ');
+      sep += 4;
+      break;
+    case 'AltLeft':
+    case 'AltRight':
+    case 'Win':
+    case 'ControlLeft':
+      return;
+    case 'CapsLock':
+      if (capsLock) {
+        mainArea.forEach((item) => {
+          if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+            item.querySelector('.sub').innerHTML = item.querySelector('.sub').innerHTML.toLowerCase();
+          }
+        });
+      } else {
+        mainArea.forEach((item) => {
+          if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+            item.querySelector('.sub').innerHTML = item.querySelector('.sub').innerHTML.toUpperCase();
+          }
+        });
+      }
+      capsLock = !capsLock;
+      break;
+    case 'ControlRight':
+      switchLanguage();
+      break;
+    case 'Delete':
+      deleteSym();
+      delay(deleteSym);
+      break;
+    case 'Backspace':
+      backspace();
+      delay(backspace);
+      break;
+    case 'Enter':
+      insSymb('\n');
+      delay(insSymb, '\n');
+      break;
+    case 'ArrowLeft':
+      sep -= 1;
+      break;
+    case 'ArrowRight':
+      sep += 1;
+      break;
+    case 'ArrowUp':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i - 1] === 'undefined') {
+        sep = 0;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i - 1].length) {
+        // если позиция в текущей строке больше длині предідущей
+        sep = res.length - arrUpDown[i].length - 2;
+      } else {
+        sep = sep - arrUpDown[i - 1].length - 1;
+      }
+      break;
+    case 'ArrowDown':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i + 1] === 'undefined') {
+        sep = res.length - 1;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i + 1].length) {
+        // если позиция больше длины следующей строки
+        sep = res.length + arrUpDown[i + 1].length;
+      } else {
+        sep += arrUpDown[i].length + 1;
+      }
+      break;
+    default:
+      insSymb(symbol);
+      delay(insSymb, symbol);
+  }
+  eventObj.addEventListener('mouseup', () => {
+    clearInterval(timer);
+    focus();
+  });
+  eventObj.classList.add('active');
 }
 
 document.onkeydown = function (e) {
-  output.innerHTML += e.key;
+  mainArea.forEach((item) => {
+    if (item.dataset.code === e.code) item.classList.add('active');
+  });
+  e.preventDefault();
+  let res = '';
+  let i = -1;
+  switch (e.key) {
+    case 'Tab':
+      insSymb('     ');
+      sep += 4;
+      break;
+    case 'CapsLock':
+      if (capsLock) {
+        mainArea.forEach((item) => {
+          if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+            item.querySelector('.sub').innerHTML = item.querySelector('.sub').innerHTML.toLowerCase();
+          }
+        });
+      } else {
+        mainArea.forEach((item) => {
+          if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+            item.querySelector('.sub').innerHTML = item.querySelector('.sub').innerHTML.toUpperCase();
+          }
+        });
+      }
+      capsLock = !capsLock;
+      break;
+    case 'Shift':
+    case 'Alt':
+      return;
+    case 'Control':
+      if (e.location === 2) switchLanguage();
+      break;
+    case 'Delete':
+      deleteSym();
+      break;
+    case 'Backspace':
+      backspace();
+      break;
+    case 'Enter':
+      insSymb('\n');
+      break;
+    case 'ArrowLeft':
+      sep -= 1;
+      break;
+    case 'ArrowRight':
+      sep += 1;
+      break;
+    case 'ArrowUp':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i - 1] === 'undefined') {
+        sep = 0;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i - 1].length) {
+        // если позиция в текущей строке больше длині предідущей
+        sep = res.length - arrUpDown[i].length - 2;
+      } else {
+        sep = sep - arrUpDown[i - 1].length - 1;
+      }
+      break;
+    case 'ArrowDown':
+      arrUpDown = output.innerHTML.split('\n');
+      while (res.length <= sep) {
+        i += 1;
+        res += arrUpDown[i] + 1;
+      }
+
+      if (typeof arrUpDown[i + 1] === 'undefined') {
+        sep = res.length - 1;
+      } else if ((sep - res.length + arrUpDown[i].length) >= arrUpDown[i + 1].length) {
+        // если позиция больше длины следующей строки
+        sep = res.length + arrUpDown[i + 1].length;
+      } else {
+        sep += arrUpDown[i].length + 1;
+      }
+      break;
+    default:
+      output.innerHTML = output.innerHTML.slice(0, sep) + e.key + output.innerHTML.slice(sep);
+      sep += 1;
+  }
 };
 
-mainArea.forEach((item) => item.addEventListener('click', main));
+document.onkeyup = function () {
+  mainArea.forEach((item) => {
+    item.classList.remove('active');
+  });
+  output.focus();
+  output.selectionStart = sep;
+  output.selectionEnd = sep;
+};
+
+document.onmouseup = function () {
+  mainArea.forEach((item) => {
+    item.classList.remove('active');
+  });
+};
+
+mainArea.forEach((item) => item.addEventListener('mousedown', main));
+output.addEventListener('click', textFocus);
