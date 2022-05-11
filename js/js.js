@@ -4,7 +4,7 @@
 document.body.insertAdjacentHTML('afterbegin', `
   <main>
     <h1 class="title">Virtual Keyboard when you study in RSS</h1>
-    <p class="hint">Use left <kbd>Alt</kbd> + <kbd>Shift</kbd> to switch language.</p>
+    <p class="hint">Use right <kbd>Ctrl</kbd> to switch language because I never use this key).</p>
     <textarea class="output" placeholder="Type here" rows="5" cols="50" spellcheck="false" autocorrect="off"></textarea>
     <div class="keyboard" data-language="en">
       <div class="row" data-row="1" style="grid-template-columns: repeat(14, 1fr);">
