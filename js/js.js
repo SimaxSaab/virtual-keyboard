@@ -1255,8 +1255,11 @@ function main(e) {
     });
   });
   eventObj.addEventListener('mouseleave', () => {
+    mainArea.forEach((item) => {
+      item.classList.remove('active');
+    });
     clearInterval(timer);
-    focus();
+    // focus();
   });
   eventObj.classList.add('active');
 }
