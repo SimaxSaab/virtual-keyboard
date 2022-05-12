@@ -1239,6 +1239,7 @@ document.onkeydown = function (e) {
     if (item.dataset.code === e.code) item.classList.add('active');
   });
   e.preventDefault();
+  const keyCode = document.querySelector(`.key[data-code="${e.code}"]`).querySelector('.sub').innerText;
   let res = '';
   let i = -1;
   switch (e.key) {
@@ -1316,7 +1317,7 @@ document.onkeydown = function (e) {
       }
       break;
     default:
-      output.innerHTML = output.innerHTML.slice(0, sep) + e.key + output.innerHTML.slice(sep);
+      output.innerHTML = output.innerHTML.slice(0, sep) + keyCode + output.innerHTML.slice(sep);
       sep += 1;
   }
 };
