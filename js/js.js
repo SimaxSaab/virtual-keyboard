@@ -1145,6 +1145,14 @@ function main(e) {
   let res = '';
   let i = -1;
   switch (eventObj.dataset.code) {
+    case 'ShiftLeft':
+    case 'ShiftRight':
+      mainArea.forEach((item, j) => {
+        if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+          item.querySelector('.sub').innerHTML = lang[j].shift;
+        }
+      });
+      break;
     case 'Tab':
       insSymb('     ');
       sep += 4;
@@ -1227,7 +1235,26 @@ function main(e) {
       insSymb(symbol);
       delay(insSymb, symbol);
   }
-  eventObj.addEventListener('mouseup', () => {
+  eventObj.addEventListener('mouseup', (ev) => {
+    if (ev.currentTarget.dataset.code === 'ShiftLeft' || ev.currentTarget.dataset.code === 'ShiftRight') {
+      setTimeout(() => {
+        mainArea.forEach((item, j) => {
+          if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+            item.querySelector('.sub').innerHTML = lang[j].small;
+          }
+          item.classList.remove('active');
+        });
+        clearInterval(timer);
+      }, 4000);
+      return;
+    }
+    clearInterval(timer);
+    focus();
+    mainArea.forEach((item) => {
+      item.classList.remove('active');
+    });
+  });
+  eventObj.addEventListener('mouseleave', () => {
     clearInterval(timer);
     focus();
   });
@@ -1235,6 +1262,10 @@ function main(e) {
 }
 
 document.onkeydown = function (e) {
+  if (e.key.match(/F12|F11|F8|F7|F6|F5|F4|F3|F2|F1|Meta/)) {
+    e.preventDefault();
+    return;
+  }
   mainArea.forEach((item) => {
     if (item.dataset.code === e.code) item.classList.add('active');
   });
@@ -1243,6 +1274,13 @@ document.onkeydown = function (e) {
   let res = '';
   let i = -1;
   switch (e.key) {
+    case 'Shift':
+      mainArea.forEach((item, j) => {
+        if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+          item.querySelector('.sub').innerHTML = lang[j].shift;
+        }
+      });
+      break;
     case 'Tab':
       insSymb('     ');
       sep += 4;
@@ -1263,7 +1301,6 @@ document.onkeydown = function (e) {
       }
       capsLock = !capsLock;
       break;
-    case 'Shift':
     case 'Alt':
       return;
     case 'Control':
@@ -1322,7 +1359,16 @@ document.onkeydown = function (e) {
   }
 };
 
-document.onkeyup = function () {
+document.onkeyup = function (e) {
+  if (e.key === 'Shift') {
+    mainArea.forEach((item, j) => {
+      if (!item.dataset.code.match(/Tab|CapsLock|Shift|ControlLeft|Win|AltLeft|AltRight|ControlRight|Delete|Backspace|Enter/)) {
+        item.querySelector('.sub').innerHTML = lang[j].small;
+      }
+      item.classList.remove('active');
+    });
+    return;
+  }
   mainArea.forEach((item) => {
     item.classList.remove('active');
   });
@@ -1331,11 +1377,11 @@ document.onkeyup = function () {
   output.selectionEnd = sep;
 };
 
-document.onmouseup = function () {
-  mainArea.forEach((item) => {
-    item.classList.remove('active');
-  });
-};
+// document.onmouseup = function () {
+//   mainArea.forEach((item) => {
+//     item.classList.remove('active');
+//   });
+// };
 
 mainArea.forEach((item) => item.addEventListener('mousedown', main));
 output.addEventListener('click', textFocus);
